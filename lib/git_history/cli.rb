@@ -8,7 +8,7 @@ module GitHistory::CLI
 
   def self.history_from_gitlog(range)
     history = []
-    `git log --date-order --date=short #{range}`.split(/^commit .*/).each do |commit|
+    `git log --date=short #{range}`.split(/^commit .*/).each do |commit|
       next unless commit.match(/\S/)
       next if commit.match(/^Merge:/)
       
@@ -18,6 +18,6 @@ module GitHistory::CLI
       history.push("#{date} #{author}\n\n#{text}")
     end
     
-    puts history.sort.reverse.join("\n\n")
+    puts history.join("\n\n")
   end
 end
