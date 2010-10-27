@@ -14,13 +14,18 @@ task :gemspec do
 end
 
 desc "Build the gem"
-task :gem => [:gemspec] do
+task :build => [:gemspec] do
   mkdir_p "pkg"
   sh "gem build git_history.gemspec"
   mv "#{gemspec.full_name}.gem", "pkg"
 end
 
+desc "Push the gem to rubygems.org"
+task :push => :build do
+  sh "gem push pkg/git_history.gem"
+end
+
 desc "Install git-history"
-task :install => :gem do
+task :install => :build do
   sh "gem install pkg/#{gemspec.full_name}.gem"
 end
