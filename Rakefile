@@ -22,7 +22,7 @@ end
 
 desc "Push the gem to rubygems.org"
 task :push => :build do
-  sh "gem push pkg/git_history.gem"
+  sh "gem push pkg/git_history.gem-*"
 end
 
 desc "Install git-history"
