@@ -1,0 +1,14 @@
+= git-history
+
+The git-history gem provide a git-history command. Its purpose is to
+reformat the git-log output to the changelog format
+http://en.wikipedia.org/wiki/Changelog.
+
+* Install
+
+gem install git-history
+
+= Usage
+
+    cd into_git_wirking_dir
+    git-history >changelog
