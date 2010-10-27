@@ -10,5 +10,24 @@ gem install git-history
 
 = Usage
 
-    cd into_git_wirking_dir
-    git-history >changelog
+    $ cd into_git_wirking_dir
+    $ git-history >changelog
+    2010-10-27 Peter Ehrenberg <peter.ehrenberg@sinnerschrader.com>
+
+            Don't sort by date
+
+    2010-10-27 Peter Ehrenberg <peter.ehrenberg@sinnerschrader.com>
+
+            Added README file
+
+    2010-10-27 Peter Ehrenberg <peter.ehrenberg@sinnerschrader.com>
+
+            Rakefile fixed
+
+    2010-10-27 Peter Ehrenberg <peter.ehrenberg@sinnerschrader.com>
+
+            Fix
+
+    2010-10-27 Peter Ehrenberg <peter.ehrenberg@sinnerschrader.com>
+
+            Initial
