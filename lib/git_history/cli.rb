@@ -2,22 +2,20 @@ module GitHistory::CLI
   require 'text'
   
   def self.run(args)
-    range = args[0]
+    range = args[0] || ''
     history_from_gitlog(range)
   end
 
-  def self.history_from_gitlog(range)
-    history = []
-    `git log --date=short #{range}`.split(/^commit .*/).each do |commit|
-      next unless commit.match(/\S/)
+  def self.history_from_gitlog(range = "")
+    r = range[/[^\&\'\"]*/]
+    `git log --date=short #{r}`.split(/^commit .*/).each do |commit|
       next if commit.match(/^Merge:/)
       
       author = commit[/^Author:\s+(.*)/,1]
       date = commit[/^Date:\s+(.*)/,1]
-      text = commit.grep(/^    .*/).map{ |l| Text::wrap(l.strip, 72, "\t") }.join("\n")
-      history.push("#{date} #{author}\n\n#{text}")
+      text = commit.lines.grep(/^    .*/).map{ |l| Text::wrap(l.strip, 72, "\t") }.join("\n")
+
+      puts "#{date} #{author}\n\n#{text}\n\n"
     end
-    
-    puts history.join("\n\n")
   end
 end
